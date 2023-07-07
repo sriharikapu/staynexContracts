@@ -86,3 +86,9 @@ abstract contract staynexProxy {
      */
     function _beforeFallback() internal virtual {}
 }
+
+contract OwnableDelegateProxy { }
+
+contract ProxyRegistry {
+    mapping(address => OwnableDelegateProxy) public proxies;
+}
