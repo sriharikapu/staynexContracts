@@ -1,5 +1,8 @@
-// SPDX-License-Identifier: MIT
-pragma solidity ^0.8.13;
+pragma solidity ^0.8.20;
+
+// @author: Srihari Kapu <sri@sriharikapu.com>
+// @author-website: http://www.sriharikapu.com
+// SPDX-License-Identifier: CC-BY-4.0
 
 /**
  * @dev Interface of the ERC20 standard as defined in the EIP.
@@ -535,9 +538,9 @@ abstract contract Ownable is Context {
     }
 }
 
-contract GRAVITY20Token is ERC20, Ownable {
+contract STAYNEX20Token is ERC20, Ownable {
 
-    constructor() ERC20('GRAVITY', 'GVTY') {
+    constructor() ERC20('STAYNEX', 'STAY') {
         _mint(owner(), 100000000 * 1e18);
     }
 }
