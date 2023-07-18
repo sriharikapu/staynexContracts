@@ -1086,25 +1086,23 @@ contract TradeableERC721 is ERC721Full, Ownable {
     require(_currentTokenId <= tsupply);
     uint256 newTokenId = _getNextTokenId();  
     _mint(_to, newTokenId);
+    setInitials(msg.sender,newTokenId);
     _incrementTokenId();
-    emit Approval(msg.sender,_to,newTokenId);
   }
 
 
-
+    
   function publicMint(address _to) public payable {
 
     require(_currentTokenId <= tsupply, "Token supply exceeded");
+    require(msg.value == 0.1 ether, "Insufficient funds");
 
     uint256 newTokenId = _getNextTokenId();
     _mint(_to, newTokenId);
     _incrementTokenId();
-    emit Approval(msg.sender, _to, newTokenId);
-
+    setInitials(msg.sender,newTokenId);
     // Transfer the payment to the payment address if there is any
-    if (msg.value > 0) {
-        propertyowner.transfer(msg.value);
-    }
+    propertyowner.transfer(msg.value);
 }
 
   
@@ -1202,99 +1200,115 @@ contract TradeableERC721 is ERC721Full, Ownable {
         } 
     }
 
+    function setInitials(address _sender,uint256 _tokenId) internal {
+            RED22 = BookingManager(_sender, _tokenId, 0);
+    	    RED23 = BookingManager(_sender, _tokenId, 0);
+    	    RED24 = BookingManager(_sender, _tokenId, 0);
+    	    RED25 = BookingManager(_sender, _tokenId, 0);
+    	    RED26 = BookingManager(_sender, _tokenId, 0);
+    	    RED27 = BookingManager(_sender, _tokenId, 0);
+    	    RED28 = BookingManager(_sender, _tokenId, 0);
+    	    RED29 = BookingManager(_sender, _tokenId, 0);
+    	    RED30 = BookingManager(_sender, _tokenId, 0);
+    	    RED31 = BookingManager(_sender, _tokenId, 0);
+    	    RED32 = BookingManager(_sender, _tokenId, 0);
+    	    RED33 = BookingManager(_sender, _tokenId, 0);
+    }
+
     function changeOwnershipRED(uint256 _tokenid) public {
       require(ownerOf(_tokenid) == msg.sender, "INVALID_NEW_OWNER");
       require(block.timestamp > RedeemTimeLimit,"CLAIM_AFTER_REDEEM_TIME_LIMIT");
       require(getTokenOwnerFromRecords(_tokenid) != msg.sender, "CURRENT_OWNER_EXCEPTION");
+      approve(msg.sender, _tokenid);
 
         if (block.timestamp > TS22 && block.timestamp < TS23) {
         	RED22 = BookingManager(msg.sender, _tokenid, RED22._redeemedNights);
-    	    RED23 = BookingManager(msg.sender, _tokenid, RED23._redeemedNights);
-    	    RED24 = BookingManager(msg.sender, _tokenid, RED24._redeemedNights);
-    	    RED25 = BookingManager(msg.sender, _tokenid, RED25._redeemedNights);
-    	    RED26 = BookingManager(msg.sender, _tokenid, RED26._redeemedNights);
-    	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED23 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED24 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED25 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED26 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED27 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS23 && block.timestamp < TS24) {
         	RED23 = BookingManager(msg.sender, _tokenid, RED23._redeemedNights);
-    	    RED24 = BookingManager(msg.sender, _tokenid, RED24._redeemedNights);
-    	    RED25 = BookingManager(msg.sender, _tokenid, RED25._redeemedNights);
-    	    RED26 = BookingManager(msg.sender, _tokenid, RED26._redeemedNights);
-    	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED24 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED25 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED26 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED27 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS24 &&  block.timestamp < TS25) {
         	RED24 = BookingManager(msg.sender, _tokenid, RED24._redeemedNights);
-    	    RED25 = BookingManager(msg.sender, _tokenid, RED25._redeemedNights);
-    	    RED26 = BookingManager(msg.sender, _tokenid, RED26._redeemedNights);
-    	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED25 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED26 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED27 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS25 && block.timestamp < TS26) {
     	    RED25 = BookingManager(msg.sender, _tokenid, RED25._redeemedNights);
-    	    RED26 = BookingManager(msg.sender, _tokenid, RED26._redeemedNights);
-    	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED26 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED27 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS26 && block.timestamp < TS27) {
     	    RED26 = BookingManager(msg.sender, _tokenid, RED26._redeemedNights);
-    	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED27 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS27 && block.timestamp < TS28) {
     	    RED27 = BookingManager(msg.sender, _tokenid, RED27._redeemedNights);
-    	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED28 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS28 && block.timestamp < TS29) {
     	    RED28 = BookingManager(msg.sender, _tokenid, RED28._redeemedNights);
-    	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED29 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS29 && block.timestamp < TS30) {
     	    RED29 = BookingManager(msg.sender, _tokenid, RED29._redeemedNights);
-    	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED30 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS30 && block.timestamp < TS31) {
     	    RED30 = BookingManager(msg.sender, _tokenid, RED30._redeemedNights);
-    	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED31 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS31 && block.timestamp < TS32) {
     	    RED31 = BookingManager(msg.sender, _tokenid, RED31._redeemedNights);
-    	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED32 = BookingManager(msg.sender, _tokenid, 0);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS32 && block.timestamp < TS33) {
     	    RED32 = BookingManager(msg.sender, _tokenid, RED32._redeemedNights);
-    	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
+    	    RED33 = BookingManager(msg.sender, _tokenid, 0);
         } else if (block.timestamp > TS33 && block.timestamp < TS34) {
     	    RED33 = BookingManager(msg.sender, _tokenid, RED33._redeemedNights);
         }
@@ -1524,8 +1538,7 @@ contract TradeableERC721 is ERC721Full, Ownable {
         }
     }
 
-    function redeemNights(uint256 _tokenidentiy, address _customerAddress, uint256 _numberDays, uint256 _redeem) public {
-    if (_redeem == 1) {
+    function redeemNights(uint256 _tokenidentiy, address _customerAddress, uint256 _numberDays) public {
         require(ownerOf(_tokenidentiy) == msg.sender, "Only NFT owner can redeem nights");
         require(getTokenOwnerFromRecords(_tokenidentiy) == msg.sender, "CLAIM_OWNERSHIP_RIGHTS");
         uint256 nRED = getNightsRedeemed(_tokenidentiy) + _numberDays;
@@ -1534,18 +1547,32 @@ contract TradeableERC721 is ERC721Full, Ownable {
         uint256 IXI_PER_REDEEM = SafeMath.mul(_numberDays, decimal);
         token.transfer(msg.sender, IXI_PER_REDEEM);
         updateRedeemedNights(msg.sender, _numberDays, 1);
-    } else if (_redeem == 0) {
-        require(msg.sender == propertyowner, "Only Hotel Owner can revert the nights");
-        require(ownerOf(_tokenidentiy) == _customerAddress);
-        uint256 nRED = getNightsRedeemed(_tokenidentiy);
-        require(nRED > _numberDays);
-        uint256 decimal = pow(10, 18);
-        uint256 IXI_PER_REFUND = SafeMath.mul(_numberDays, decimal);
-        token.transfer(_customerAddress, IXI_PER_REFUND);
-        updateRedeemedNights(_customerAddress, _numberDays, 0);
-    }
     }
 
+    function refundNights(uint256 _tokenidentiy, address _customerAddress, uint256 _numberDays) public payable returns(string memory) {
+        require(msg.sender == propertyowner, "Only Hotel Owner can revert the nights");
+        require(ownerOf(_tokenidentiy) == _customerAddress);
+        require(msg.value == 0, "Insufficient funds");
+
+        uint256 nRED = getNightsRedeemed(_tokenidentiy);
+        if(nRED > _numberDays ){
+            uint256 decimal = pow(10, 18);
+            uint256 IXI_PER_REFUND = SafeMath.mul(_numberDays, decimal);
+            token.transfer(_customerAddress, IXI_PER_REFUND);
+            updateRedeemedNights(_customerAddress, _numberDays, 0);
+            return("REFUND_SUCCESSFUL");
+        }else if(nRED > _numberDays){
+            uint256 decimal = pow(10, 18);
+            uint256 IXI_PER_REFUND = SafeMath.mul(_numberDays, decimal);
+            token.transfer(_customerAddress, IXI_PER_REFUND);
+            updateRedeemedNights(_customerAddress, _numberDays, 0);
+            return("REFUND_SUCCESSFUL");
+        }else {
+            return("INVALID_NUMBER_OF_NIGHTS");
+        }
+
+    }
+    
   function getBurntTokens() public view returns(uint256[] memory){
      return BurntTokens;
   }
@@ -1705,3 +1732,4 @@ contract STAYNEX_GENISIS is TradeableERC721, ReentrancyGuard {
     _baseTokenURI = uri;
   }
 }
+ 
